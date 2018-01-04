@@ -27,7 +27,7 @@ namespace CDateTime {
      * @param timestamp         requested time
      * @return
      */
-    bool GetTimeFromString(std::string strtime, long &timestamp);
+    bool GetTimeFromString(std::string strtime, long &timestamp, std::string strFormat = "%d-%d-%dT%d:%d:%d");
 
     /**
      * @brief GetDiffDay        calculate different day from starttime to endtime
@@ -36,6 +36,8 @@ namespace CDateTime {
      * @return
      */
     int GetDiffDay(long starttime, long endtime);
+
+    bool GetCurrentDateTimeToMircosecond(std::string &strtime ,std::string strformat);
 
 } //namespace CDateTime
 
