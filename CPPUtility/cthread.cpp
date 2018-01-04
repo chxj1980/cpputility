@@ -1,8 +1,5 @@
 #include "cthread.h"
 
-
-#include <iostream>
-
 CThread::CThread()
     : m_isRunning(false)
 {
@@ -19,11 +16,6 @@ CThread::~CThread()
 
 void CThread::start()
 {
-
-#ifndef _POSIX_MONOTONIC_CLOCK
-std::cout << "error" << std::endl;
-#endif
-
     m_startmutex.lock();
     m_thread = std::thread(&CThread::thread, this);
     m_thread.detach();
@@ -42,9 +34,7 @@ bool CThread::isFinished()
 bool CThread::wait(unsigned long time)
 {
     std::unique_lock<std::mutex> locker(m_startmutex);
-    std::chrono::seconds cseconds(time);
-    std::chrono::system_clock::time_point sctimepoint(cseconds);
-    bool bWait = m_mutex.try_lock_until(sctimepoint);
+    bool bWait = m_mutex.try_lock_for(std::chrono::milliseconds(time));
     if(bWait)
         m_mutex.unlock();
     return bWait;
