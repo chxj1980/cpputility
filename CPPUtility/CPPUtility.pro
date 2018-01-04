@@ -16,6 +16,7 @@ HEADERS += \
     cthread.h \
     cdatetime.h \
     cstring.h \
+    ctemplatequeue.h \
     cnetwork.h
 
 SOURCES += \
