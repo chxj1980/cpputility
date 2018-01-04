@@ -15,9 +15,11 @@ unix
 HEADERS += \
     cthread.h \
     cdatetime.h \
-    cstring.h
+    cstring.h \
+    cnetwork.h
 
 SOURCES += \
     cthread.cpp \
     cdatetime.cpp \
-    cstring.cpp
+    cstring.cpp \
+    cnetwork.cpp
